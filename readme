@@ -1,1 +1,32 @@
+
+
 hello wait i will add the files
+
+https://helloworld-ftfo4ql2pa-uc.a.run.app
+
+
+
+async function getNearestMasjid(latitude, longitude, radiusInKm = 5) {
+    const baseUrl = 'https://helloworld-ftfo4ql2pa-uc.a.run.app';
+    const url = `${baseUrl}/getNearestMasjid?latitude=${latitude}&longitude=${longitude}&radiusInKm=${radiusInKm}`;
+    
+    try {
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            mode: 'cors', // explicitly set CORS mode
+        });
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        console.error('Error:', error);
+        throw error;
+    }
+}
